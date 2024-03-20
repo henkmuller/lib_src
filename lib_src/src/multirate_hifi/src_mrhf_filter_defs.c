@@ -68,7 +68,11 @@ FIRDescriptor_t            sASRCFirDescriptor[FILTER_DEFS_ASRC_N_FIR_ID] =
     {FIR_TYPE_OS2,                            FILTER_DEFS_FIR_UPF_N_TAPS,            iFirUPFCoefs},            // FILTER_DEFS_FIR_UPF_ID
     {FIR_TYPE_OS2,                            FILTER_DEFS_FIR_UP192176_N_TAPS,    iFirUP192176Coefs},        // FILTER_DEFS_FIR_UP192176_ID
     {FIR_TYPE_DS2,                            FILTER_DEFS_FIR_DS_N_TAPS,            iFirDSCoefs},            // FILTER_DEFS_FIR_DS_ID
-    {FIR_TYPE_SYNC,                            0,                                    0}                        // FILTER_DEFS_FIR_NONE_ID
+    {FIR_TYPE_SYNC,                            0,                                    0},                       // FILTER_DEFS_FIR_NONE_ID
+#if defined(ASRC_24_32_SUPPORT)
+    {FIR_TYPE_OS2,                            FILTER_DEFS_FIR_UP3224_N_TAPS,        iFirUP3224Coefs},        // FILTER_DEFS_FIR_UP3224_ID
+    {FIR_TYPE_OS2,                            FILTER_DEFS_FIR_UP4832_N_TAPS,        iFirUP4832Coefs},        // FILTER_DEFS_FIR_UP4832_ID
+#endif
 };
 
 // FIR filters coefficients
@@ -93,8 +97,14 @@ int                    iFirBL17696[FILTER_DEFS_FIR_BL17696_N_TAPS]     = {
 int                    iFirUPCoefs[FILTER_DEFS_FIR_UP_N_TAPS]     = {
     #include FILTER_DEFS_FIR_UP_FILE
 };
+int                    iFirUP3224Coefs[FILTER_DEFS_FIR_UP3224_N_TAPS]     = {
+    #include FILTER_DEFS_FIR_UP3224_FILE
+};
 int                    iFirUP4844Coefs[FILTER_DEFS_FIR_UP4844_N_TAPS]     = {
     #include FILTER_DEFS_FIR_UP4844_FILE
+};
+int                    iFirUP4832Coefs[FILTER_DEFS_FIR_UP4832_N_TAPS]     = {
+    #include FILTER_DEFS_FIR_UP4832_FILE
 };
 int                    iFirUPFCoefs[FILTER_DEFS_FIR_UPF_N_TAPS]     = {
     #include FILTER_DEFS_FIR_UPF_FILE

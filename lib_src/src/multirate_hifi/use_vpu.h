@@ -1,5 +1,6 @@
 // Copyright 2024 XMOS LIMITED.
 // This Software is subject to the terms of the XMOS Public Licence: Version 1.
+#define ASRC_24_32_SUPPORT 1
 #ifndef SRC_USE_VPU
     #if defined(__XS3A__)
         #define  SRC_USE_VPU    1

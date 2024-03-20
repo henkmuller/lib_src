@@ -48,10 +48,19 @@
     #define        FILTER_DEFS_ASRC_FIR_UP192176_ID            9            // ID of UP192176 FIR filter
     #define        FILTER_DEFS_ASRC_FIR_DS_ID                10            // ID of DS FIR filter
     #define        FILTER_DEFS_ASRC_FIR_NONE_ID                11            // ID of disabled FIR filter
+#if defined(ASRC_24_32_SUPPORT)
+    #define        FILTER_DEFS_ASRC_FIR_UP3224_ID            12            // ID of UP3224 FIR filter
+    #define        FILTER_DEFS_ASRC_FIR_UP4832_ID            13            // ID of UP4832 FIR filter
+#endif
+    #define        FILTER_DEFS_ASRC_FIR_ERR_ID               (-99)            // ID of disabled FIR filter
 
 
     #define        FILTER_DEFS_SSRC_N_FIR_ID                  (FILTER_DEFS_SSRC_FIR_NONE_ID + 1)        // Number of FIR IDs corresponding to real FIRs
+#if defined(ASRC_24_32_SUPPORT)
+        #define        FILTER_DEFS_ASRC_N_FIR_ID                  (FILTER_DEFS_ASRC_FIR_UP4832_ID + 1)        // Number of FIR IDs corresponding to real FIRs
+#else
         #define        FILTER_DEFS_ASRC_N_FIR_ID                  (FILTER_DEFS_ASRC_FIR_NONE_ID + 1)        // Number of FIR IDs corresponding to real FIRs
+#endif
 
     // FIR filter number of taps
     #define        FILTER_DEFS_FIR_BL_N_TAPS            144            // Number of taps of BL FIR filter
@@ -61,7 +70,9 @@
     #define        FILTER_DEFS_FIR_BL19288_N_TAPS        96            // Number of taps of BL19288 filter
     #define        FILTER_DEFS_FIR_BL17696_N_TAPS        96            // Number of taps of BL17696 filter
     #define        FILTER_DEFS_FIR_UP_N_TAPS            144            // Number of taps of UP filter
+    #define        FILTER_DEFS_FIR_UP3224_N_TAPS        160            // Number of taps of UP3224 filter
     #define        FILTER_DEFS_FIR_UP4844_N_TAPS        160            // Number of taps of UP4844 filter
+    #define        FILTER_DEFS_FIR_UP4832_N_TAPS        160            // Number of taps of UP4832 filter
     #define        FILTER_DEFS_FIR_UPF_N_TAPS            96            // Number of taps of UPF filter
     #define        FILTER_DEFS_FIR_UP192176_N_TAPS        96            // Number of taps of UP192176 filter
     #define        FILTER_DEFS_FIR_DS_N_TAPS            32            // Number of taps of DS filter
@@ -79,7 +90,9 @@
     #define        FILTER_DEFS_FIR_BL19288_FILE           "FilterData/BL19288.dat"    // Coefficients file for BL19288 FIR filter
     #define        FILTER_DEFS_FIR_BL17696_FILE           "FilterData/BL17696.dat"    // Coefficients file for BL17696 filter
     #define        FILTER_DEFS_FIR_UP_FILE                "FilterData/UP_xs3.dat"            // Coefficients file for UP filter
+    #define        FILTER_DEFS_FIR_UP3224_FILE            "FilterData/UP3224_xs3.dat"        // Coefficients file for UP3224 filter
     #define        FILTER_DEFS_FIR_UP4844_FILE            "FilterData/UP4844_xs3.dat"        // Coefficients file for UP4844 filter
+    #define        FILTER_DEFS_FIR_UP4832_FILE            "FilterData/UP4832_xs3.dat"        // Coefficients file for UP4832 filter
     #define        FILTER_DEFS_FIR_UPF_FILE               "FilterData/UPF_xs3.dat"        // Coefficients file for UPF filter
     #define        FILTER_DEFS_FIR_UP192176_FILE          "FilterData/UP192176_xs3.dat"    // Coefficients file for UP192176 filter
     #define        FILTER_DEFS_FIR_OS_FILE                "FilterData/OS_xs3.dat"            // Coefficients file for OS filter
@@ -91,7 +104,9 @@
     #define        FILTER_DEFS_FIR_BL19288_FILE        "FilterData/BL19288.dat"    // Coefficients file for BL19288 FIR filter
     #define        FILTER_DEFS_FIR_BL17696_FILE        "FilterData/BL17696.dat"    // Coefficients file for BL17696 filter
     #define        FILTER_DEFS_FIR_UP_FILE                "FilterData/UP.dat"            // Coefficients file for UP filter
+    #define        FILTER_DEFS_FIR_UP3224_FILE            "FilterData/UP3224.dat"        // Coefficients file for UP3224 filter
     #define        FILTER_DEFS_FIR_UP4844_FILE            "FilterData/UP4844.dat"        // Coefficients file for UP4844 filter
+    #define        FILTER_DEFS_FIR_UP4832_FILE            "FilterData/UP4832.dat"        // Coefficients file for UP4832 filter
     #define        FILTER_DEFS_FIR_UPF_FILE            "FilterData/UPF.dat"        // Coefficients file for UPF filter
     #define        FILTER_DEFS_FIR_UP192176_FILE        "FilterData/UP192176.dat"    // Coefficients file for UP192176 filter
     #define        FILTER_DEFS_FIR_OS_FILE                "FilterData/OS.dat"            // Coefficients file for OS filter
@@ -153,7 +168,9 @@
     extern        int                                    iFirBL19288Coefs[FILTER_DEFS_FIR_BL19288_N_TAPS];
     extern        int                                    iFirBL17696[FILTER_DEFS_FIR_BL17696_N_TAPS];
     extern        int                                    iFirUPCoefs[FILTER_DEFS_FIR_UP_N_TAPS];
+    extern        int                                    iFirUP3224Coefs[FILTER_DEFS_FIR_UP3224_N_TAPS];
     extern        int                                    iFirUP4844Coefs[FILTER_DEFS_FIR_UP4844_N_TAPS];
+    extern        int                                    iFirUP4832Coefs[FILTER_DEFS_FIR_UP4832_N_TAPS];
     extern        int                                    iFirUPFCoefs[FILTER_DEFS_FIR_UPF_N_TAPS];
     extern        int                                    iFirUP192176Coefs[FILTER_DEFS_FIR_UP192176_N_TAPS];
     extern        int                                    iFirDSCoefs[FILTER_DEFS_FIR_DS_N_TAPS];

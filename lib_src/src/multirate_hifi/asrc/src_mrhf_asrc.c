@@ -40,6 +40,8 @@
 #define        ASRC_STATE_INIT                            0
 
 // Nominal Fs Ratio values
+#define        ASRC_FS_24_F                            (24000.0)
+#define        ASRC_FS_32_F                            (32000.0)
 #define        ASRC_FS_44_F                            (44100.0)
 #define        ASRC_FS_48_F                            (48000.0)
 #define        ASRC_FS_88_F                            (88200.0)
@@ -47,83 +49,143 @@
 #define        ASRC_FS_176_F                            (176400.0)
 #define        ASRC_FS_192_F                            (192000.0)
 
-#define		ASRC_FS_RATIO_44_44 						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_44_44_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_44_48 						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_44_48_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_44_88						    (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_44_88_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_44_96						    (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_44_96_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_44_176						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_44_176_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_44_192						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_44_192_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_24_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_24_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_24_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
 
-#define		ASRC_FS_RATIO_48_44						    (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_48_44_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_48_48						    (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_48_48_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_48_88						    (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_48_88_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_48_96						    (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_48_96_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_48_176						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_48_176_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_48_192						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_48_192_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_32_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_32_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_32_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
 
-#define		ASRC_FS_RATIO_88_44						    (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_88_44_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_88_48						    (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_88_48_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_88_88						    (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_88_88_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_88_96						    (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_88_96_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_88_176						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_88_176_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_88_192						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_88_192_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_44_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_44_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_44_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
 
-#define		ASRC_FS_RATIO_96_44						    (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_96_44_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_96_48						    (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_96_48_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_96_88						    (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_96_88_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_96_96						    (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_96_96_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_96_176						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_96_176_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_96_192						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_96_192_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_48_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_48_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_48_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
 
-#define		ASRC_FS_RATIO_176_44						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_176_44_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_176_48						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_176_48_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_176_88						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_176_88_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_176_96						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_176_96_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_176_176						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_176_176_LO					(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_176_192						(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_176_192_LO					(uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_88_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_88_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_88_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
 
-#define		ASRC_FS_RATIO_192_44						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_192_44_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_192_48						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_192_48_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_192_88						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_192_88_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_192_96						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_192_96_LO						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_192_176						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_192_176_LO					(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
-#define		ASRC_FS_RATIO_192_192						(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
-#define		ASRC_FS_RATIO_192_192_LO					(uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_96_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_96_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_96_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+
+#define  ASRC_FS_RATIO_176_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_176_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_176_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_176_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_176_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_176_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_176_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_176_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_176_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_176_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+
+#define  ASRC_FS_RATIO_192_24      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_24_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_24_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_192_32      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_32_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_32_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_192_44      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_44_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_44_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_192_48      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_48_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_48_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_192_88      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_88_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_88_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_192_96      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_96_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_96_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_192_176      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_176_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_176_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+#define  ASRC_FS_RATIO_192_192      (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))) >> 32)
+#define  ASRC_FS_RATIO_192_192_LO   (uint32_t)((unsigned long long)(((double)ASRC_FS_192_F / ASRC_FS_192_F) * ((unsigned long long)1 << (ASRC_FS_RATIO_UNIT_BIT + 32))))
+
+
 
 #define        ASRC_FS_RATIO_MIN_FACTOR                (0.99)
 #define        ASRC_FS_RATIO_MAX_FACTOR                (1.01)
@@ -162,7 +224,11 @@ ASRCFiltersIDs_t        sASRCFiltersIDs[ASRC_N_FS][ASRC_N_FS] =                /
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 88.2kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
-        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}}         // Fsout = 192kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 32kHz
+#endif
     },
     {    // Fsin = 48kHz
         // F1                            F2
@@ -171,7 +237,11 @@ ASRCFiltersIDs_t        sASRCFiltersIDs[ASRC_N_FS][ASRC_N_FS] =                /
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 88.2kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
-        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}}         // Fsout = 192kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+        {{FILTER_DEFS_ASRC_FIR_BL_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_UP4832_ID,        FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 32kHz
+#endif
     },
     {    // Fsin = 88.2kHz
         // F1                            F2
@@ -180,7 +250,11 @@ ASRCFiltersIDs_t        sASRCFiltersIDs[ASRC_N_FS][ASRC_N_FS] =                /
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 88.2kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
-        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}}         // Fsout = 192kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 32kHz
+#endif
     },
     {    // Fsin = 96kHz
         // F1                            F2
@@ -189,7 +263,11 @@ ASRCFiltersIDs_t        sASRCFiltersIDs[ASRC_N_FS][ASRC_N_FS] =                /
         {{FILTER_DEFS_ASRC_FIR_UP4844_ID,        FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 88.2kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
         {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
-        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}}         // Fsout = 192kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 32kHz
+#endif
     },
     {    // Fsin = 176.4kHz
         // F1                            F2
@@ -198,7 +276,11 @@ ASRCFiltersIDs_t        sASRCFiltersIDs[ASRC_N_FS][ASRC_N_FS] =                /
         {{FITLER_DEFS_ASRC_FIR_BLF_ID,           FILTER_DEFS_ASRC_FIR_NONE_ID,}},       // Fsout = 88.2kHz
         {{FILTER_DEFS_ASRC_FIR_BL17696_ID,       FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
         {{FILTER_DEFS_ASRC_FIR_UPF_ID,           FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
-        {{FILTER_DEFS_ASRC_FIR_UPF_ID,           FILTER_DEFS_ASRC_FIR_NONE_ID}}         // Fsout = 192kHz
+        {{FILTER_DEFS_ASRC_FIR_UPF_ID,           FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 32kHz
+#endif
     },
     {    // Fsin = 192kHz
         // F1                            F2
@@ -207,8 +289,36 @@ ASRCFiltersIDs_t        sASRCFiltersIDs[ASRC_N_FS][ASRC_N_FS] =                /
         {{FITLER_DEFS_ASRC_FIR_BL19288_ID,       FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 88.2kHz
         {{FITLER_DEFS_ASRC_FIR_BLF_ID,           FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
         {{FILTER_DEFS_ASRC_FIR_UP192176_ID,      FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
-        {{FILTER_DEFS_ASRC_FIR_UPF_ID,           FILTER_DEFS_ASRC_FIR_NONE_ID}}         // Fsout = 192kHz
-    }
+        {{FILTER_DEFS_ASRC_FIR_UPF_ID,           FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_ERR_ID,           FILTER_DEFS_ASRC_FIR_ERR_ID}},         // Fsout = 32kHz
+#endif
+    },
+#if defined(ASRC_24_32_SUPPORT)
+    {    // Fsin = 24kHz
+        // F1                            F2
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 44.1kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 48kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 88.2kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 32kHz
+    },
+    {    // Fsin = 32kHz
+        // F1                            F2
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 44.1kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 48kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 88.2kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 96kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 176.4kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 192kHz
+        {{FILTER_DEFS_ASRC_FIR_UP3224_ID,        FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 24kHz
+        {{FILTER_DEFS_ASRC_FIR_UP_ID,            FILTER_DEFS_ASRC_FIR_NONE_ID}},        // Fsout = 32kHz
+    },
+#endif
 };
 
 
@@ -221,7 +331,11 @@ ASRCFsRatioConfigs_t		sFsRatioConfigs[ASRC_N_FS][ASRC_N_FS] =				// Fs ratio con
 		{ASRC_FS_RATIO_44_88, ASRC_FS_RATIO_44_88_LO,			(unsigned int)(ASRC_FS_RATIO_44_88 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_44_88 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 88.2kHz
 		{ASRC_FS_RATIO_44_96, ASRC_FS_RATIO_44_96_LO,			(unsigned int)(ASRC_FS_RATIO_44_96 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_44_96 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 96kHz
 		{ASRC_FS_RATIO_44_176, ASRC_FS_RATIO_44_176_LO,			(unsigned int)(ASRC_FS_RATIO_44_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_44_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
-		{ASRC_FS_RATIO_44_192, ASRC_FS_RATIO_44_192_LO,			(unsigned int)(ASRC_FS_RATIO_44_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_44_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1}			// Fsout = 192kHz
+		{ASRC_FS_RATIO_44_192, ASRC_FS_RATIO_44_192_LO,			(unsigned int)(ASRC_FS_RATIO_44_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_44_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+		{ASRC_FS_RATIO_44_24,		ASRC_FS_RATIO_44_24_LO, 	(unsigned int)(ASRC_FS_RATIO_44_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_44_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_44_32,		ASRC_FS_RATIO_44_32_LO, 	(unsigned int)(ASRC_FS_RATIO_44_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_44_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+#endif
 	},
 	{	// Fsin = 48kHz
 		// Nominal Fs Ratio				// Minimal Fs Ratio														// Maximal Fs Ratio														Shift for time step
@@ -230,7 +344,11 @@ ASRCFsRatioConfigs_t		sFsRatioConfigs[ASRC_N_FS][ASRC_N_FS] =				// Fs ratio con
 		{ASRC_FS_RATIO_48_88, ASRC_FS_RATIO_48_88_LO,			(unsigned int)(ASRC_FS_RATIO_48_88 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_48_88 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 88.2kHz
 		{ASRC_FS_RATIO_48_96, ASRC_FS_RATIO_48_96_LO,			(unsigned int)(ASRC_FS_RATIO_48_96 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_48_96 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 96kHz
 		{ASRC_FS_RATIO_48_176, ASRC_FS_RATIO_48_176_LO,			(unsigned int)(ASRC_FS_RATIO_48_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_48_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
-		{ASRC_FS_RATIO_48_192, ASRC_FS_RATIO_48_192_LO,			(unsigned int)(ASRC_FS_RATIO_48_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_48_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1}			// Fsout = 192kHz
+		{ASRC_FS_RATIO_48_192, ASRC_FS_RATIO_48_192_LO,			(unsigned int)(ASRC_FS_RATIO_48_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_48_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+		{ASRC_FS_RATIO_48_24,		ASRC_FS_RATIO_48_24_LO, 	(unsigned int)(ASRC_FS_RATIO_48_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_48_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_0},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_48_32,		ASRC_FS_RATIO_48_32_LO, 	(unsigned int)(ASRC_FS_RATIO_48_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_48_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+#endif
 	},
 	{	// Fsin = 88.2kHz
 		// Nominal Fs Ratio				// Minimal Fs Ratio														// Maximal Fs Ratio														Shift for time step
@@ -239,7 +357,11 @@ ASRCFsRatioConfigs_t		sFsRatioConfigs[ASRC_N_FS][ASRC_N_FS] =				// Fs ratio con
 		{ASRC_FS_RATIO_88_88, ASRC_FS_RATIO_88_88_LO,			(unsigned int)(ASRC_FS_RATIO_88_88 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_88_88 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 88.2kHz
 		{ASRC_FS_RATIO_88_96, ASRC_FS_RATIO_88_96_LO,			(unsigned int)(ASRC_FS_RATIO_88_96 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_88_96 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 96kHz
 		{ASRC_FS_RATIO_88_176, ASRC_FS_RATIO_88_176_LO,			(unsigned int)(ASRC_FS_RATIO_88_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_88_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
-		{ASRC_FS_RATIO_88_192, ASRC_FS_RATIO_88_192_LO,			(unsigned int)(ASRC_FS_RATIO_88_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_88_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1}			// Fsout = 192kHz
+		{ASRC_FS_RATIO_88_192, ASRC_FS_RATIO_88_192_LO,			(unsigned int)(ASRC_FS_RATIO_88_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_88_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+		{ASRC_FS_RATIO_88_24,		ASRC_FS_RATIO_88_24_LO, 	(unsigned int)(ASRC_FS_RATIO_88_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_88_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_88_32,		ASRC_FS_RATIO_88_32_LO, 	(unsigned int)(ASRC_FS_RATIO_88_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_88_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+#endif
 	},
 	{	// Fsin = 96kHz
 		// Nominal Fs Ratio				// Minimal Fs Ratio														// Maximal Fs Ratio														Shift for time step
@@ -248,7 +370,11 @@ ASRCFsRatioConfigs_t		sFsRatioConfigs[ASRC_N_FS][ASRC_N_FS] =				// Fs ratio con
 		{ASRC_FS_RATIO_96_88, ASRC_FS_RATIO_96_88_LO,			(unsigned int)(ASRC_FS_RATIO_96_88 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_96_88 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 88.2kHz
 		{ASRC_FS_RATIO_96_96,	ASRC_FS_RATIO_96_96_LO,		(unsigned int)(ASRC_FS_RATIO_96_96 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_96_96 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 96kHz
 		{ASRC_FS_RATIO_96_176,	ASRC_FS_RATIO_96_176_LO,		(unsigned int)(ASRC_FS_RATIO_96_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_96_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
-		{ASRC_FS_RATIO_96_192,	ASRC_FS_RATIO_96_192_LO,		(unsigned int)(ASRC_FS_RATIO_96_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_96_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1}			// Fsout = 192kHz
+		{ASRC_FS_RATIO_96_192,	ASRC_FS_RATIO_96_192_LO,		(unsigned int)(ASRC_FS_RATIO_96_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_96_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+		{ASRC_FS_RATIO_96_24,		ASRC_FS_RATIO_96_24_LO, 	(unsigned int)(ASRC_FS_RATIO_96_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_96_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_96_32,		ASRC_FS_RATIO_96_32_LO, 	(unsigned int)(ASRC_FS_RATIO_96_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_96_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+#endif
 	},
 	{	// Fsin = 176.4kHz
 		// Nominal Fs Ratio				// Minimal Fs Ratio														// Maximal Fs Ratio														Shift for time step
@@ -257,7 +383,11 @@ ASRCFsRatioConfigs_t		sFsRatioConfigs[ASRC_N_FS][ASRC_N_FS] =				// Fs ratio con
 		{ASRC_FS_RATIO_176_88,	ASRC_FS_RATIO_176_88_LO,		(unsigned int)(ASRC_FS_RATIO_176_88 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_176_88 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_0},			// Fsout = 88.2kHz
 		{ASRC_FS_RATIO_176_96,	ASRC_FS_RATIO_176_96_LO,		(unsigned int)(ASRC_FS_RATIO_176_96 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_176_96 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_0},			// Fsout = 96kHz
 		{ASRC_FS_RATIO_176_176,	ASRC_FS_RATIO_176_176_LO,		(unsigned int)(ASRC_FS_RATIO_176_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_176_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
-		{ASRC_FS_RATIO_176_192,	ASRC_FS_RATIO_176_192_LO,		(unsigned int)(ASRC_FS_RATIO_176_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_176_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1}			// Fsout = 192kHz
+		{ASRC_FS_RATIO_176_192,	ASRC_FS_RATIO_176_192_LO,		(unsigned int)(ASRC_FS_RATIO_176_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_176_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+		{ASRC_FS_RATIO_176_24,		ASRC_FS_RATIO_176_24_LO, 	(unsigned int)(ASRC_FS_RATIO_176_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_176_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_176_32,		ASRC_FS_RATIO_176_32_LO, 	(unsigned int)(ASRC_FS_RATIO_176_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_176_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+#endif
 	},
 	{	// Fsin = 192kHz
 		// Nominal Fs Ratio				// Minimal Fs Ratio														// Maximal Fs Ratio														Shift for time step
@@ -266,8 +396,36 @@ ASRCFsRatioConfigs_t		sFsRatioConfigs[ASRC_N_FS][ASRC_N_FS] =				// Fs ratio con
 		{ASRC_FS_RATIO_192_88,	ASRC_FS_RATIO_192_88_LO,		(unsigned int)(ASRC_FS_RATIO_192_88 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_192_88 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_0},			// Fsout = 88.2kHz
 		{ASRC_FS_RATIO_192_96,	ASRC_FS_RATIO_192_96_LO,		(unsigned int)(ASRC_FS_RATIO_192_96 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_192_96 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_0},			// Fsout = 96kHz
 		{ASRC_FS_RATIO_192_176,	ASRC_FS_RATIO_192_176_LO,		(unsigned int)(ASRC_FS_RATIO_192_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_192_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
-		{ASRC_FS_RATIO_192_192,	ASRC_FS_RATIO_192_192_LO,		(unsigned int)(ASRC_FS_RATIO_192_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_192_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1}			// Fsout = 192kHz
-	}
+		{ASRC_FS_RATIO_192_192,	ASRC_FS_RATIO_192_192_LO,		(unsigned int)(ASRC_FS_RATIO_192_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_192_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+#if defined(ASRC_24_32_SUPPORT)
+		{ASRC_FS_RATIO_192_24,		ASRC_FS_RATIO_192_24_LO, 	(unsigned int)(ASRC_FS_RATIO_192_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_192_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_192_32,		ASRC_FS_RATIO_192_32_LO, 	(unsigned int)(ASRC_FS_RATIO_192_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_192_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+#endif
+	},
+#if defined(ASRC_24_32_SUPPORT)
+	{	// Fsin = 24kHz
+		// Nominal Fs Ratio				// Minimal Fs Ratio														// Maximal Fs Ratio														Shift for time step
+		{ASRC_FS_RATIO_24_44,		ASRC_FS_RATIO_24_44_LO, 	(unsigned int)(ASRC_FS_RATIO_24_44 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_24_44 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 44.1kHz
+		{ASRC_FS_RATIO_24_48, ASRC_FS_RATIO_24_48_LO,			(unsigned int)(ASRC_FS_RATIO_24_48 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_24_48 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 48kHz
+		{ASRC_FS_RATIO_24_88, ASRC_FS_RATIO_24_88_LO,			(unsigned int)(ASRC_FS_RATIO_24_88 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_24_88 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 88.2kHz
+		{ASRC_FS_RATIO_24_96, ASRC_FS_RATIO_24_96_LO,			(unsigned int)(ASRC_FS_RATIO_24_96 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_24_96 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 96kHz
+		{ASRC_FS_RATIO_24_176, ASRC_FS_RATIO_24_176_LO,			(unsigned int)(ASRC_FS_RATIO_24_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_24_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
+		{ASRC_FS_RATIO_24_192, ASRC_FS_RATIO_24_192_LO,			(unsigned int)(ASRC_FS_RATIO_24_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_24_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+		{ASRC_FS_RATIO_24_24,		ASRC_FS_RATIO_24_24_LO, 	(unsigned int)(ASRC_FS_RATIO_24_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_24_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_24_32,		ASRC_FS_RATIO_24_32_LO, 	(unsigned int)(ASRC_FS_RATIO_24_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_24_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+	},
+	{	// Fsin = 32kHz
+		// Nominal Fs Ratio				// Minimal Fs Ratio														// Maximal Fs Ratio														Shift for time step
+		{ASRC_FS_RATIO_32_44,		ASRC_FS_RATIO_32_44_LO, 	(unsigned int)(ASRC_FS_RATIO_32_44 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_32_44 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 44.1kHz
+		{ASRC_FS_RATIO_32_48, ASRC_FS_RATIO_32_48_LO,			(unsigned int)(ASRC_FS_RATIO_32_48 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_32_48 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 48kHz
+		{ASRC_FS_RATIO_32_88, ASRC_FS_RATIO_32_88_LO,			(unsigned int)(ASRC_FS_RATIO_32_88 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_32_88 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 88.2kHz
+		{ASRC_FS_RATIO_32_96, ASRC_FS_RATIO_32_96_LO,			(unsigned int)(ASRC_FS_RATIO_32_96 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_32_96 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 96kHz
+		{ASRC_FS_RATIO_32_176, ASRC_FS_RATIO_32_176_LO,			(unsigned int)(ASRC_FS_RATIO_32_176 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_32_176 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 176.4kHz
+		{ASRC_FS_RATIO_32_192, ASRC_FS_RATIO_32_192_LO,			(unsigned int)(ASRC_FS_RATIO_32_192 * ASRC_FS_RATIO_MIN_FACTOR),		(unsigned int)(ASRC_FS_RATIO_32_192 * ASRC_FS_RATIO_MAX_FACTOR),		ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 192kHz
+		{ASRC_FS_RATIO_32_24,		ASRC_FS_RATIO_32_24_LO, 	(unsigned int)(ASRC_FS_RATIO_32_24 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_32_24 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 24kHz
+		{ASRC_FS_RATIO_32_32,		ASRC_FS_RATIO_32_32_LO, 	(unsigned int)(ASRC_FS_RATIO_32_32 * ASRC_FS_RATIO_MIN_FACTOR),			(unsigned int)(ASRC_FS_RATIO_32_32 * ASRC_FS_RATIO_MAX_FACTOR),			ASRC_FS_RATIO_SHIFT_P1},		// Fsout = 32kHz
+	},
+#endif
 };
 
 // ===========================================================================

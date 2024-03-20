@@ -23,7 +23,11 @@ typedef enum fs_code_t {
     FS_CODE_88 = 2,
     FS_CODE_96 = 3,
     FS_CODE_176 = 4,
-    FS_CODE_192 = 5
+    FS_CODE_192 = 5,
+#if defined(ASRC_24_32_SUPPORT)
+    FS_CODE_24 = 6,
+    FS_CODE_32 = 7,
+#endif
 } fs_code_t;
 
 /** Flag to switch dither processing to 24b (from 32b) on or off */

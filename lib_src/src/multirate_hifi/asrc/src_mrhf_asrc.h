@@ -84,10 +84,20 @@
             ASRC_FS_96                                = 3,                                // Fs = 96kHz code
             ASRC_FS_176                                = 4,                                // Fs = 176.4kHz code
             ASRC_FS_192                                = 5,                                // Fs = 192kHz code
+#if defined(ASRC_24_32_SUPPORT)
+            ASRC_FS_24                                = 6,                                // Fs = 24kHz code
+            ASRC_FS_32                                = 7,                                // Fs = 32kHz code
+#endif
         } ASRCFs_t;
+#if defined(ASRC_24_32_SUPPORT)
+        #define        ASRC_N_FS                        (ASRC_FS_32 + 1)
+        #define        ASRC_FS_MIN                        ASRC_FS_44  // Lowest index
+        #define        ASRC_FS_MAX                        ASRC_FS_32  // Highest index
+#else
         #define        ASRC_N_FS                        (ASRC_FS_192 + 1)
         #define        ASRC_FS_MIN                        ASRC_FS_44
         #define        ASRC_FS_MAX                        ASRC_FS_192
+#endif
 
 
         // ASRC Filters IDs structure
